@@ -2,3 +2,13 @@ p {
   font-family: Lato;
 }
 
+.navbar {
+  background-color: blue;
+  padding: 15px 30px;
+
+}
+
+h3{
+  color: white;
+  font-size: 22px;
+}
