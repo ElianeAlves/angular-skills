@@ -26,7 +26,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "startlegacy": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve"
+    "startlegacy": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve",
+    "buildlegacy": "set NODE_OPTIONS=--openssl-legacy-provider && ng build"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
