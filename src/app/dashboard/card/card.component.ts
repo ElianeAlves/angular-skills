@@ -1,13 +1,13 @@
 import { LoadingService } from './../../services/loading.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() card: any;
   isLoading: boolean = false;
@@ -16,29 +16,22 @@ export class CardComponent implements OnInit {
   ) { }
   private apiUrl = 'api/skills/';
 
-  ngOnInit() {
-  }
-
   onLike(card: any) {
     // TODO: incrementar o like, salvar via rest
-
     this.loadingService.openLoading()
     const body = {
       ...card,
       likes: card.likes + 1
     };
 
-    // Envia a solicitação PUT para a API em memória
     this.httpClient.put(this.apiUrl + card.id, body).subscribe((res: any) => {
-      console.log('Likes incrementados com sucesso:', res);
+      /* Adicionei o loading completo na tela devido ao tempo de resposta da requisição */
       this.loadingService.closeLoading()
-
     }, error => {
       console.error('Erro ao incrementar likes:', error);
     });
 
     this.httpClient.get('api/skills').subscribe((res: any) => {
-      console.log('res', res)
       this.card = res.find((item: any) => item.id == card.id)
     })
   }
@@ -47,5 +40,4 @@ export class CardComponent implements OnInit {
     // TODO: abrir o link do seu linkedin
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(card.link)}`);
   }
-
 }
