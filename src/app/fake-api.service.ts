@@ -179,7 +179,7 @@ export class FakeApiService implements InMemoryDbService {
         description: 'Iniciei os primeiros passos em back-end com o Node.Js desenvolvendo API com Express, criação de rotas e validações de dados em get, put, patch, delete.',
         pic: '../assets/images/nodejs.webp',
         likes: 1,
-        doc: 'https://www.figma.com/community/plugin/991866272578143756/figma-docs',
+        doc: 'https://nodejs.org/docs/latest/api/',
         type: 'B'
 
       },
@@ -189,7 +189,7 @@ export class FakeApiService implements InMemoryDbService {
         description: 'O inicio do meu aprendizado na área de desenvolvimento, tudo começou com SQL, através dele me apaixonei por saber em como funcionava os sistemas de software. Possuo conhecimentos básicos de consulta e manipulação de dados.',
         pic: '../assets/images/sql.webp',
         likes: 1,
-        doc: 'https://www.figma.com/community/plugin/991866272578143756/figma-docs',
+        doc: 'https://www.w3schools.com/sql/',
         type: 'B'
 
       },
@@ -209,7 +209,7 @@ export class FakeApiService implements InMemoryDbService {
         description: 'Acompanhado do Node.js, tenho estudado o back-end com o MongoDB, realizando criação e manipulação de dados em tabela. Inicialmente para facilitar meus estudos, utilizo o (GUI) MongoDB Compass',
         pic: '../assets/images/mongodb.webp',
         likes: 1,
-        doc: 'https://learning.postman.com/docs/introduction/overview/',
+        doc: 'https://www.mongodb.com/docs/',
         type: 'B'
 
       },
