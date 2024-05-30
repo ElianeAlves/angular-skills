@@ -1,5 +1,5 @@
-import { LoadingService } from './../../services/loading.service';
-import { HttpClient } from '@angular/common/http';
+import { Skills } from 'src/app/models/skills.model';
+import { SkillsService } from './../../services/skills.service';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -8,36 +8,52 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  @Input() card: Skills;
+  isLoading: boolean = false
+  progress: boolean = false
 
-  @Input() card: any;
-  isLoading: boolean = false;
-  constructor(private httpClient: HttpClient,
-    private loadingService: LoadingService
+  constructor(
+    private skillsService: SkillsService
   ) { }
-  private apiUrl = 'api/skills/';
+
 
   onLike(card: any) {
     // TODO: incrementar o like, salvar via rest
-    this.loadingService.openLoading()
     const body = {
       ...card,
       likes: card.likes + 1
     };
+    this.progress = true
 
-    this.httpClient.put(this.apiUrl + card.id, body).subscribe((res: any) => {
-      /* Adicionei o loading completo na tela devido ao tempo de resposta da requisição */
-      this.loadingService.closeLoading()
+
+    this.skillsService.patchSkills(card.id, body).subscribe((res: any) => {
+      // Adicionei o loading completo na tela devido ao tempo de resposta da requisição
+      this.progress = false
+
+
+      //Ao sucesso do put dos dados, valor do card é incrementado em 1
+      card.likes++
+
     }, error => {
       console.error('Erro ao incrementar likes:', error);
     });
 
-    this.httpClient.get('api/skills').subscribe((res: any) => {
-      this.card = res.find((item: any) => item.id == card.id)
-    })
   }
 
-  onShare(card: any) {
+  onShare() {
     // TODO: abrir o link do seu linkedin
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(card.link)}`);
+    // Entedido que a função deve abrir meu perfil do linkedin
+    window.open(`https://www.linkedin.com/in/eliane-alves96/`, '_blank');
+
+
+    // abre a janela de nova publicação no linkedin
+    // let url = window.location.href
+    // window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
   }
+
+  openDoc(url: string){
+    window.open(url, '_blank')
+  }
+
+
 }

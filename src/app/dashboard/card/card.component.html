@@ -1,19 +1,28 @@
-<div class="">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{card.name}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image [src]="card.pic" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        {{card.description}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button class="flex gap-2" [class.selected]="card.likes >= 5" [class.tenLikes]="card.likes >= 10" mat-button (click)="onLike(card)">LIKE<mat-icon>favorite</mat-icon>
-        {{card.likes}}</button>
-      <button mat-button (click)="onShare(card.pic)">SHARE<mat-icon>open_in_new</mat-icon></button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{card.name}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="card.pic" alt="Photo of a Shiba Inu">
+  <mat-card-content class="heigthContent">
+    <p class="text">
+      {{card.description}}
+    </p>
+  </mat-card-content>
+
+  <mat-card-content>
+    <div class="buttons">
+      <button [disabled]="progress" [class.progress]="progress" [class.selected]="card.likes >= 5"
+        [class.tenLikes]="card.likes >= 10" mat-button (click)="onLike(card)">Like
+        {{card.likes}} <mat-icon class="icon-small">favorite</mat-icon></button>
+      <button mat-button (click)="onShare()">Compartilhar<mat-icon class="icon-small">share</mat-icon></button>
+      <button *ngIf="card.doc" mat-button (click)="openDoc(card.doc)">Doc<mat-icon
+          class="icon-small">open_in_new</mat-icon></button>
+    </div>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="progress" mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+
+</mat-card>
 

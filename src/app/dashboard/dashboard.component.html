@@ -1,8 +1,31 @@
 <!--TODO: melhorar o layout dos cards para exibir ao menos 2 por linha em telas > md, e pequenas (sm) 1 -->
 <div class="background">
-    <div class="wrapper container">
-        <app-card [card]="card" *ngFor="let card of cards"></app-card>
+    <div *ngIf="data" class="container">
+        <div id="front">
+            <app-title [title]="'Front End'" style="margin-top: 20px;"></app-title>
+            <div class="wrapper" id="front">
+                <app-card [card]="card" *ngFor="let card of cardsFront"></app-card>
+            </div>
+        </div>
+
+        <div id="back" style="margin-top: 20px;">
+            <app-title [title]="'Back End/Database'"></app-title>
+            <div class="wrapper">
+                <app-card [card]="card" *ngFor="let card of cardsBack"></app-card>
+            </div>
+        </div>
+        <div id="projects" style="margin-top: 20px;">
+            <app-title [title]="'Meus trabalhos'"></app-title>
+            <p>Não possuo projetos pessoais relevantes para apresentar, portanto tomei a liberdade de adicionar essa
+                seção com alguns dos projetos que já desenvolvi.</p>
+            <p style="margin-bottom: 20px;">**Todos estão publicados em <span
+                    style="font-weight: 600;">produção</span>.
+            </p>
+            <div class="wrapper">
+                <app-card-project [item]="item" *ngFor="let item of myProjetcs"></app-card-project>
+            </div>
+        </div>
     </div>
 </div>
 
-<app-loading  *ngIf="isLoading || !cards"></app-loading>
+<app-loading *ngIf="isLoading || !data"></app-loading>

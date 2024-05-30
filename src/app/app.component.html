@@ -1,8 +1,24 @@
 <div class="navbar">
-  <h3>
-    Minhas Habilidades
-  </h3>
+  <div class="container">
+    <h3>Minhas Habilidades</h3>
+    <ul class="flex">
+      <a [routerLink]="['/']" fragment="front">
+        <li>Front End</li>
+      </a>
+      <a [routerLink]="['/']" fragment="back">
+        <li>Back End</li>
+      </a>
+      <a [routerLink]="['/']" fragment="projects">
+        <li>Meus trabalhos</li>
+      </a>
+    </ul>
+  </div>
 </div>
 
 <app-dashboard></app-dashboard>
 
+<div class="fixed">
+  <button class="btnColor" (click)="scrollTop()" mat-mini-fab aria-label="scrol button">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>

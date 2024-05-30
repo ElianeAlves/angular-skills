@@ -4,6 +4,9 @@
 
 }
 
+.text {
+  font-size: 16px;
+}
 
 .selected {
   background-color: #3f51b6;
@@ -14,6 +17,38 @@
   background-color: #e34c26;
   color: white;
 }
+
 img {
   aspect-ratio: 1/1;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.progress:hover {
+  cursor: progress;
+}
+
+.icon-small {
+  font-size: 20px;
+}
+
+.heigthContent {
+  height: 153px
+}
+
+@media (max-width: 480px) {
+  .heigthContent {
+    height: 100%
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
 }
